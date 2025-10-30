@@ -1,0 +1,131 @@
+.dashboard {
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 3rem 2.5rem 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.dashboard__hero {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  padding: 2.2rem 2.6rem;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, #ff9248, #f97316);
+  color: #fff7ed;
+  border: 1px solid rgba(255, 255, 255, 0.32);
+  box-shadow: 0 30px 60px -45px rgba(249, 115, 22, 0.6);
+}
+
+.dashboard__hero h1 {
+  font-size: 2.1rem;
+  color: #ffffff;
+}
+
+.dashboard__hero p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 640px;
+}
+
+.dashboard__badge {
+  background: rgba(31, 31, 31, 0.25);
+  border-radius: 999px;
+  padding: 0.4rem 0.85rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-flex;
+  gap: 0.4rem;
+  align-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.dashboard__highlights {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1rem;
+}
+
+.dashboard__highlights > div {
+  background: rgba(255, 247, 237, 0.35);
+  border-radius: 1rem;
+  padding: 1rem 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  color: #fffaf5;
+}
+
+.dashboard__highlights small {
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.dashboard__highlights strong {
+  font-size: 1.1rem;
+  color: #ffffff;
+}
+
+.dashboard__visuals {
+  display: grid;
+  gap: 1.4rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+@media (max-width: 1024px) {
+  .dashboard {
+    padding: 2.5rem 2rem 3.5rem;
+  }
+
+  .dashboard__hero {
+    padding: 1.8rem 2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .dashboard__visuals {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    padding: 2.25rem 1.5rem 3rem;
+  }
+
+  .dashboard__hero {
+    padding: 1.6rem;
+  }
+
+  .dashboard__hero h1 {
+    font-size: 1.8rem;
+  }
+
+  .dashboard__hero p {
+    font-size: 0.95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .dashboard {
+    padding: 2rem 1.25rem 2.5rem;
+    gap: 1.6rem;
+  }
+
+  .dashboard__hero {
+    gap: 1rem;
+    padding: 1.4rem;
+  }
+
+  .dashboard__highlights {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  }
+}

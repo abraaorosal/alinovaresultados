@@ -1,0 +1,88 @@
+.filter-bar {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  align-items: end;
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: rgba(31, 31, 31, 0.75);
+  font-size: 0.85rem;
+}
+
+.filter-group select {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 148, 54, 0.35);
+  border-radius: 0.75rem;
+  padding: 0.6rem 0.8rem;
+  color: #1f1f1f;
+  font-size: 0.95rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.filter-group select:focus {
+  outline: none;
+  border-color: rgba(249, 115, 22, 0.8);
+  box-shadow: 0 0 0 3px rgba(249, 115, 22, 0.2);
+}
+
+.range-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.35rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 148, 54, 0.35);
+}
+
+.range-button {
+  background: transparent;
+  border: none;
+  color: rgba(31, 31, 31, 0.75);
+  padding: 0.5rem 1rem;
+  border-radius: 0.65rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  flex: 1 1 140px;
+}
+
+.range-button:hover {
+  background-color: rgba(249, 115, 22, 0.12);
+}
+
+.range-button--active {
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #ffffff;
+}
+
+@media (max-width: 960px) {
+  .filter-bar {
+    align-items: stretch;
+  }
+}
+
+@media (max-width: 720px) {
+  .filter-bar {
+    grid-template-columns: 1fr;
+  }
+
+  .range-group {
+    width: 100%;
+  }
+
+  .range-button {
+    flex: 1 1 46%;
+  }
+}
+
+@media (max-width: 480px) {
+  .range-button {
+    flex-basis: 100%;
+    font-size: 0.85rem;
+  }
+}

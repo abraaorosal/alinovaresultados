@@ -1,0 +1,132 @@
+.table-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.96), rgba(255, 247, 237, 0.96));
+  border-radius: 1.25rem;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid rgba(255, 168, 76, 0.28);
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  color: #1f1f1f;
+  box-shadow: 0 30px 60px -45px rgba(249, 115, 22, 0.3);
+}
+
+.table-card__header h2 {
+  font-size: 1.2rem;
+  color: #1f2933;
+}
+
+.table-card__header span {
+  font-size: 0.85rem;
+  color: rgba(31, 31, 31, 0.6);
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+thead th {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  color: rgba(31, 31, 31, 0.75);
+  font-weight: 600;
+  border-bottom: 1px solid rgba(255, 168, 76, 0.25);
+}
+
+tbody td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgba(255, 148, 54, 0.1);
+  color: rgba(31, 31, 31, 0.85);
+}
+
+tbody tr:hover td {
+  background: rgba(249, 115, 22, 0.08);
+}
+
+.table-empty {
+  text-align: center;
+  padding: 2rem;
+  color: rgba(31, 31, 31, 0.6);
+}
+
+@media (max-width: 768px) {
+  .table-card {
+    padding: 1.2rem 1.3rem;
+  }
+
+  table {
+    font-size: 0.85rem;
+  }
+
+  thead th,
+  tbody td {
+    padding: 0.65rem 0.75rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .table-card {
+    padding: 1rem 1.1rem;
+  }
+
+  .table-card__header h2 {
+    font-size: 1.05rem;
+  }
+
+  .table-card__header span {
+    font-size: 0.8rem;
+  }
+
+  .table-wrapper {
+    overflow: visible;
+  }
+
+  table,
+  tbody,
+  tr {
+    display: block;
+    width: 100%;
+  }
+
+  thead {
+    display: none;
+  }
+
+  tbody tr {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.75rem 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(255, 148, 54, 0.18);
+  }
+
+  tbody td {
+    padding: 0;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    color: rgba(31, 31, 31, 0.85);
+  }
+
+  tbody td::before {
+    content: attr(data-label);
+    font-size: 0.75rem;
+    color: rgba(31, 31, 31, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  tbody tr:hover td {
+    background: none;
+  }
+
+  .table-empty {
+    padding: 1.6rem;
+  }
+}
