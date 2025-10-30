@@ -14,6 +14,7 @@ interface FilterBarProps {
 }
 
 const rangeLabels: Record<DateRangeOption, string> = {
+  acumulado: 'Período completo',
   mes: 'Mês atual',
   ultimos7: 'Últimos 7 dias',
   ultimos14: 'Últimos 14 dias'

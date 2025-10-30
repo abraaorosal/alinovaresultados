@@ -3,10 +3,14 @@
     "client": "DONANA GOUMERT",
     "cmvAtual": 0.42,
     "month": "2025-10-01T00:00:00",
+    "monthStart": "2025-09-01T00:00:00",
+    "monthEnd": "2025-10-01T00:00:00",
     "faturamentoMedio": 200000.0,
-    "cmvEmReais": 84000.0,
-    "custoDesperdicio": 504.91718000000003,
-    "percentualDesperdicio": 0.00601091880952381
+    "cmvEmReais": 168000.0,
+    "custoDesperdicio": 1095.09278,
+    "percentualDesperdicio": 0.006518409404761905,
+    "vendaDesperdicada": 5556.8091,
+    "percentualVendaDesperdicada": 0.013892022750000002
   },
   "products": [
     {
@@ -98,681 +102,851 @@
     {
       "date": "2025-09-01T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 3.156,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-01T00:00:00",
       "product": "Sopa carne com legumes",
+      "category": "Sopas",
       "costPerKg": 14.7,
       "wasteKg": 1.326,
       "wasteCost": 19.4922,
+      "wastePrice": 39.5148,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-01T00:00:00",
       "product": "Macarrão espaguete cozido",
+      "category": "Self service",
       "costPerKg": 12.54,
       "wasteKg": 1.0,
       "wasteCost": 12.54,
+      "wastePrice": 64.9,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-01T00:00:00",
       "product": "Salada de maionese",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 0.694,
       "wasteCost": 0.0,
+      "wastePrice": 45.0406,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-02T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.556,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.74,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Feijoada",
+      "category": "Self service",
       "costPerKg": 15.0,
       "wasteKg": 1.76,
       "wasteCost": 26.4,
+      "wastePrice": 114.224,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Fígado bovino",
+      "category": "Self service",
       "costPerKg": 17.0,
       "wasteKg": 0.348,
       "wasteCost": 5.9159999999999995,
+      "wastePrice": 22.5852,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Creme de frango",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 2.272,
       "wasteCost": 0.0,
+      "wastePrice": 147.4528,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 2.674,
       "wasteCost": 19.2528,
+      "wastePrice": 173.54260000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-03T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.518,
       "wasteCost": 7.7440999999999995,
+      "wastePrice": 33.6182,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-09-04T00:00:00",
       "product": "Couve",
+      "category": "Self service",
       "costPerKg": 12.0,
       "wasteKg": 0.645,
       "wasteCost": 7.74,
+      "wastePrice": 41.8605,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-04T00:00:00",
       "product": "Sobras clientes",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 1.69,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-05T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.454,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-06T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.212,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-08T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 1.31,
       "wasteCost": 19.5845,
+      "wastePrice": 85.019,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-09-08T00:00:00",
       "product": "Salada crua",
+      "category": "Self service",
       "costPerKg": 28.0,
       "wasteKg": 1.208,
       "wasteCost": 33.824,
+      "wastePrice": 78.39920000000001,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-08T00:00:00",
       "product": "Vatapá",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 2.634,
       "wasteCost": 0.0,
+      "wastePrice": 170.94660000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-09T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.676,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-10T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.878,
       "wasteCost": 13.1261,
+      "wastePrice": 56.982200000000006,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-09-10T00:00:00",
       "product": "Feijoada",
+      "category": "Self service",
       "costPerKg": 15.0,
       "wasteKg": 4.072,
       "wasteCost": 61.08,
+      "wastePrice": 264.2728,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-11T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.386,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-12T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.738,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-16T00:00:00",
       "product": "Macarrão espaguete cozido",
+      "category": "Self service",
       "costPerKg": 12.54,
       "wasteKg": 2.488,
       "wasteCost": 31.199519999999996,
+      "wastePrice": 161.4712,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-16T00:00:00",
       "product": "Macarrão espaguete cozido",
+      "category": "Self service",
       "costPerKg": 12.54,
       "wasteKg": 1.602,
       "wasteCost": 20.08908,
+      "wastePrice": 103.96980000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-16T00:00:00",
       "product": "Feijão carioca",
+      "category": "Self service",
       "costPerKg": 6.1,
       "wasteKg": 3.272,
       "wasteCost": 19.9592,
+      "wastePrice": 212.3528,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-17T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.098,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-17T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 2.272,
       "wasteCost": 16.3584,
+      "wastePrice": 147.4528,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-18T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.142,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-21T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 4.32,
       "wasteCost": 31.104000000000003,
+      "wastePrice": 280.36800000000005,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-24T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 0.804,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-24T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.218,
       "wasteCost": 3.2590999999999997,
+      "wastePrice": 14.148200000000001,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-09-24T00:00:00",
       "product": "Consumê de carne",
+      "category": "Sopas",
       "costPerKg": 28.65,
       "wasteKg": 5.688,
       "wasteCost": 162.9612,
+      "wastePrice": 192.25439999999998,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-26T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.338,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-09-26T00:00:00",
       "product": "Consumê de carne",
+      "category": "Sopas",
       "costPerKg": 28.65,
       "wasteKg": 1.772,
       "wasteCost": 50.7678,
+      "wastePrice": 59.89359999999999,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-27T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.552,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-28T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 3.858,
       "wasteCost": 27.7776,
+      "wastePrice": 250.38420000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-09-30T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.59,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-01T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.852,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-02T00:00:00",
       "product": "Consumê de carne",
+      "category": "Sopas",
       "costPerKg": 28.65,
       "wasteKg": 3.21,
       "wasteCost": 91.9665,
+      "wastePrice": 108.49799999999999,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-02T00:00:00",
       "product": "Sopa de feijão",
+      "category": "Sopas",
       "costPerKg": 4.52,
       "wasteKg": 3.164,
       "wasteCost": 14.301279999999998,
+      "wastePrice": 94.28720000000001,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-02T00:00:00",
       "product": "Feijão tropeiro",
+      "category": "Sopas",
       "costPerKg": 0.0,
       "wasteKg": 0.37,
       "wasteCost": 0.0,
+      "wastePrice": 24.013,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-10-02T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.838,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-03T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 3.136,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-06T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.16,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-09T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.456,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-09T00:00:00",
       "product": "Feijão carioca",
+      "category": "Self service",
       "costPerKg": 6.1,
       "wasteKg": 1.382,
       "wasteCost": 8.4302,
+      "wastePrice": 89.6918,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-09T00:00:00",
       "product": "Consumê de carne",
+      "category": "Sopas",
       "costPerKg": 28.65,
       "wasteKg": 2.276,
       "wasteCost": 65.20739999999999,
+      "wastePrice": 76.92879999999998,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-10T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.004,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-12T00:00:00",
       "product": "Macarrão espaguete cozido",
+      "category": "Self service",
       "costPerKg": 12.54,
       "wasteKg": 2.078,
       "wasteCost": 26.058119999999995,
+      "wastePrice": 134.8622,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-12T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.498,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-13T00:00:00",
       "product": "Feijão carioca",
+      "category": "Self service",
       "costPerKg": 6.1,
       "wasteKg": 1.814,
       "wasteCost": 11.0654,
+      "wastePrice": 117.72860000000001,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-14T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 1.682,
       "wasteCost": 12.1104,
+      "wastePrice": 109.1618,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-14T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.758,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-15T00:00:00",
       "product": "Peixe ao molho de camarão",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 1.774,
       "wasteCost": 0.0,
+      "wastePrice": 115.13260000000001,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-15T00:00:00",
       "product": "Strogonoff de carne",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 1.442,
       "wasteCost": 0.0,
+      "wastePrice": 93.5858,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-15T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.268,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-16T00:00:00",
       "product": "Feijão carioca",
+      "category": "Self service",
       "costPerKg": 6.1,
       "wasteKg": 0.958,
       "wasteCost": 5.843799999999999,
+      "wastePrice": 62.174200000000006,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-16T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.46,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-16T00:00:00",
       "product": "Salada crua",
+      "category": "Self service",
       "costPerKg": 28.0,
       "wasteKg": 0.306,
       "wasteCost": 8.568,
+      "wastePrice": 19.8594,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-16T00:00:00",
       "product": "Arroz cozido",
+      "category": "Self service",
       "costPerKg": 2.44,
       "wasteKg": 2.822,
       "wasteCost": 6.88568,
+      "wastePrice": 183.14780000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-16T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.622,
       "wasteCost": 9.2989,
+      "wastePrice": 40.3678,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-10-17T00:00:00",
       "product": "Frango desfiado",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 0.334,
       "wasteCost": 0.0,
+      "wastePrice": 21.676600000000004,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-17T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.806,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-18T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 2.356,
       "wasteCost": 16.9632,
+      "wastePrice": 152.9044,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-18T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.296,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-18T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.482,
       "wasteCost": 7.2059,
+      "wastePrice": 31.2818,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-10-18T00:00:00",
       "product": "Salada crua",
+      "category": "Self service",
       "costPerKg": 28.0,
       "wasteKg": 1.13,
       "wasteCost": 31.639999999999997,
+      "wastePrice": 73.337,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-22T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.82,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-22T00:00:00",
       "product": "Fígado bovino",
+      "category": "Self service",
       "costPerKg": 17.0,
       "wasteKg": 0.532,
       "wasteCost": 9.044,
+      "wastePrice": 34.5268,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-10-22T00:00:00",
       "product": "Frango desfiado",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 0.432,
       "wasteCost": 0.0,
+      "wastePrice": 28.036800000000003,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-23T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.44,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-23T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 2.818,
       "wasteCost": 20.2896,
+      "wastePrice": 182.8882,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-23T00:00:00",
       "product": "Feijão carioca",
+      "category": "Self service",
       "costPerKg": 6.1,
       "wasteKg": 3.142,
       "wasteCost": 19.1662,
+      "wastePrice": 203.91580000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-23T00:00:00",
       "product": "Sopa de feijão",
+      "category": "Sopas",
       "costPerKg": 4.52,
       "wasteKg": 10.018,
       "wasteCost": 45.28136,
+      "wastePrice": 298.5364,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-24T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.678,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-25T00:00:00",
       "product": "Vatapá",
+      "category": "Self service",
       "costPerKg": 0.0,
       "wasteKg": 1.51,
       "wasteCost": 0.0,
+      "wastePrice": 97.99900000000001,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-25T00:00:00",
       "product": "Consumê de carne",
+      "category": "Sopas",
       "costPerKg": 28.65,
       "wasteKg": 0.856,
       "wasteCost": 24.5244,
+      "wastePrice": 28.932799999999997,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-25T00:00:00",
       "product": "Arroz cozido",
+      "category": "Self service",
       "costPerKg": 2.44,
       "wasteKg": 1.126,
       "wasteCost": 2.7474399999999997,
+      "wastePrice": 73.0774,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-25T00:00:00",
       "product": "Baião",
+      "category": "Self service",
       "costPerKg": 7.2,
       "wasteKg": 2.68,
       "wasteCost": 19.296000000000003,
+      "wastePrice": 173.93200000000002,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-25T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.126,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-27T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 2.036,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     },
     {
       "date": "2025-10-27T00:00:00",
       "product": "Batata frita",
+      "category": "Self service",
       "costPerKg": 14.95,
       "wasteKg": 0.76,
       "wasteCost": 11.362,
+      "wastePrice": 49.324000000000005,
       "reason": "Sem aproveitamento"
     },
     {
       "date": "2025-10-28T00:00:00",
       "product": "Sopa carne com legumes",
+      "category": "Sopas",
       "costPerKg": 14.7,
       "wasteKg": 2.562,
       "wasteCost": 37.66139999999999,
+      "wastePrice": 76.3476,
       "reason": "Estragado"
     },
     {
       "date": "2025-10-28T00:00:00",
       "product": "Sobras clientes",
+      "category": "Sobras clientes",
       "costPerKg": 0.0,
       "wasteKg": 1.722,
       "wasteCost": 0.0,
+      "wastePrice": 0.0,
       "reason": "Sobras"
     }
   ]

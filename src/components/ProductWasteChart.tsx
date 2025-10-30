@@ -3,6 +3,7 @@ import {
   Bar,
   BarChart,
   CartesianGrid,
+  Legend,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -11,7 +12,7 @@ import {
 import './ChartCard.css';
 
 interface ProductWasteChartProps {
-  data: Array<{ product: string; wasteCost: number }>;
+  data: Array<{ product: string; wasteCost: number; wastePrice: number }>;
 }
 
 const currencyFormatter = (value: number) =>
@@ -57,7 +58,14 @@ export const ProductWasteChart: FC<ProductWasteChartProps> = ({ data }) => (
           />
           <Bar
             dataKey="wasteCost"
+            name="Custo de desperdício"
             fill="url(#orangeBar)"
+            radius={[12, 12, 12, 12]}
+          />
+          <Bar
+            dataKey="wastePrice"
+            name="Venda desperdiçada"
+            fill="url(#amberBar)"
             radius={[12, 12, 12, 12]}
           />
           <defs>
@@ -65,7 +73,12 @@ export const ProductWasteChart: FC<ProductWasteChartProps> = ({ data }) => (
               <stop offset="0%" stopColor="#f97316" />
               <stop offset="100%" stopColor="#ea580c" />
             </linearGradient>
+            <linearGradient id="amberBar" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stopColor="#facc15" />
+              <stop offset="100%" stopColor="#f97316" />
+            </linearGradient>
           </defs>
+          <Legend />
         </BarChart>
       </ResponsiveContainer>
     </div>

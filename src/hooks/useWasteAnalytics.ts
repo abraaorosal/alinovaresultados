@@ -9,7 +9,7 @@ import {
 } from 'date-fns';
 import type { WasteDataset, WasteRecord } from '../data/types';
 
-export type DateRangeOption = 'mes' | 'ultimos7' | 'ultimos14';
+export type DateRangeOption = 'acumulado' | 'mes' | 'ultimos7' | 'ultimos14';
 
 export interface WasteFilters {
   reason: string;
@@ -28,8 +28,17 @@ export interface KpiCard {
 export interface WasteAnalytics {
   filteredRecords: WasteRecord[];
   kpis: KpiCard[];
-  dailyWasteSeries: Array<{ date: string; wasteCost: number; wasteKg: number }>;
-  productWasteSeries: Array<{ product: string; wasteCost: number }>;
+  dailyWasteSeries: Array<{
+    date: string;
+    wasteCost: number;
+    wasteKg: number;
+    wastePrice: number;
+  }>;
+  productWasteSeries: Array<{
+    product: string;
+    wasteCost: number;
+    wastePrice: number;
+  }>;
   reasonDistribution: Array<{ reason: string; wasteCost: number }>;
   peakDay: { date: string; wasteCost: number } | null;
 }
@@ -47,11 +56,19 @@ const applyFilters = (
   const startDate =
     range === 'mes'
       ? baseStart
-      : subDays(endDate, range === 'ultimos7' ? 7 : 14);
+      : range === 'ultimos7'
+        ? subDays(endDate, 7)
+        : range === 'ultimos14'
+          ? subDays(endDate, 14)
+          : null;
 
   return records.filter((record) => {
     const recordDate = parseISO(record.date);
-    if (isBefore(recordDate, startDate) || isAfter(recordDate, endDate)) {
+    if (
+      range !== 'acumulado' &&
+      startDate &&
+      (isBefore(recordDate, startDate) || isAfter(recordDate, endDate))
+    ) {
       return false;
     }
     if (reason !== 'todos' && record.reason !== reason) {
@@ -91,18 +108,28 @@ export const useWasteAnalytics = (
       (acc, record) => {
         const wasteCost = normalizeNumber(record.wasteCost);
         const wasteKg = normalizeNumber(record.wasteKg);
+        const wastePrice = normalizeNumber(record.wastePrice);
         acc.wasteCost += wasteCost;
         acc.wasteKg += wasteKg;
+        acc.wastePrice += wastePrice;
         const key = format(parseISO(record.date), 'yyyy-MM-dd');
         if (!acc.byDay[key]) {
-          acc.byDay[key] = { wasteCost: 0, wasteKg: 0 };
+          acc.byDay[key] = { wasteCost: 0, wasteKg: 0, wastePrice: 0 };
         }
         acc.byDay[key].wasteCost += wasteCost;
         acc.byDay[key].wasteKg += wasteKg;
+        acc.byDay[key].wastePrice += wastePrice;
         if (!acc.byProduct[record.product]) {
-          acc.byProduct[record.product] = 0;
+          acc.byProduct[record.product] = { wasteCost: 0, wastePrice: 0 };
         }
-        acc.byProduct[record.product] += wasteCost;
+        acc.byProduct[record.product].wasteCost += wasteCost;
+        acc.byProduct[record.product].wastePrice += wastePrice;
+        const category = record.category ?? 'Sem categoria';
+        if (!acc.byCategory[category]) {
+          acc.byCategory[category] = { wasteCost: 0, wastePrice: 0 };
+        }
+        acc.byCategory[category].wasteCost += wasteCost;
+        acc.byCategory[category].wastePrice += wastePrice;
         const reason = record.reason ?? WASTE_REASON_FALLBACK;
         if (!acc.byReason[reason]) {
           acc.byReason[reason] = 0;
@@ -113,8 +140,10 @@ export const useWasteAnalytics = (
       {
         wasteCost: 0,
         wasteKg: 0,
-        byDay: {} as Record<string, { wasteCost: number; wasteKg: number }>,
-        byProduct: {} as Record<string, number>,
+        wastePrice: 0,
+        byDay: {} as Record<string, { wasteCost: number; wasteKg: number; wastePrice: number }>,
+        byProduct: {} as Record<string, { wasteCost: number; wastePrice: number }>,
+        byCategory: {} as Record<string, { wasteCost: number; wastePrice: number }>,
         byReason: {} as Record<string, number>
       }
     );
@@ -124,13 +153,21 @@ export const useWasteAnalytics = (
       .map(([date, value]) => ({
         date,
         wasteCost: value.wasteCost,
-        wasteKg: value.wasteKg
+        wasteKg: value.wasteKg,
+        wastePrice: value.wastePrice
       }))
       .sort((a, b) => (a.date > b.date ? 1 : -1));
 
     const productWasteSeries = Object.entries(totals.byProduct)
-      .map(([product, wasteCost]) => ({ product, wasteCost }))
-      .sort((a, b) => b.wasteCost - a.wasteCost)
+      .map(([product, metrics]) => ({
+        product,
+        wasteCost: metrics.wasteCost,
+        wastePrice: metrics.wastePrice
+      }))
+      .sort(
+        (a, b) =>
+          b.wasteCost + b.wastePrice - (a.wasteCost + a.wastePrice)
+      )
       .slice(0, 6);
 
     const reasonDistribution = Object.entries(totals.byReason)
@@ -148,10 +185,26 @@ export const useWasteAnalytics = (
     );
 
     const daysConsidered = dailyEntries.length || 1;
+    const monthSegments =
+      filteredRecords.length > 0
+        ? new Set(
+            filteredRecords.map((record) =>
+              format(parseISO(record.date), 'yyyy-MM')
+            )
+          ).size
+        : 1;
     const averageDailyWaste = totals.wasteCost / daysConsidered;
     const faturamentoMedio = normalizeNumber(clientInfo.faturamentoMedio);
+    const faturamentoReferencia =
+      monthSegments > 1 ? faturamentoMedio * monthSegments : faturamentoMedio;
     const wasteAgainstRevenue =
-      faturamentoMedio > 0 ? (totals.wasteCost / faturamentoMedio) * 100 : 0;
+      faturamentoReferencia > 0
+        ? (totals.wasteCost / faturamentoReferencia) * 100
+        : 0;
+    const vendaDesperdicadaPercent =
+      faturamentoReferencia > 0
+        ? (totals.wastePrice / faturamentoReferencia) * 100
+        : 0;
 
     const kpis: KpiCard[] = [
       {
@@ -164,6 +217,15 @@ export const useWasteAnalytics = (
         helper: `Índice atual: ${(clientInfo.percentualDesperdicio * 100).toFixed(
           2
         )}%`
+      },
+      {
+        id: 'wasteRevenue',
+        label: 'Venda desperdiçada',
+        value: totals.wastePrice.toLocaleString('pt-BR', {
+          style: 'currency',
+          currency: 'BRL'
+        }),
+        helper: `Impacto no faturamento: ${vendaDesperdicadaPercent.toFixed(2)}%`
       },
       {
         id: 'wasteKg',

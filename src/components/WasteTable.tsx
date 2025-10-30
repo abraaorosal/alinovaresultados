@@ -20,15 +20,18 @@ export const WasteTable: FC<WasteTableProps> = ({ records }) => (
           <tr>
             <th>Data</th>
             <th>Produto</th>
+            <th>Categoria</th>
             <th>Motivo</th>
+            <th>Custo / kg</th>
             <th>Kg descartados</th>
             <th>Custo</th>
+            <th>Preço desperdiçado</th>
           </tr>
         </thead>
         <tbody>
           {records.length === 0 ? (
             <tr>
-              <td colSpan={5} className="table-empty">
+              <td colSpan={8} className="table-empty">
                 Nenhum registro para o filtro selecionado.
               </td>
             </tr>
@@ -42,10 +45,23 @@ export const WasteTable: FC<WasteTableProps> = ({ records }) => (
                   })}
                 </td>
                 <td data-label="Produto">{record.product}</td>
+                <td data-label="Categoria">{record.category ?? 'Não informado'}</td>
                 <td data-label="Motivo">{record.reason ?? 'Não informado'}</td>
+                <td data-label="Custo / kg">
+                  {record.costPerKg?.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }) ?? '-'}
+                </td>
                 <td data-label="Kg descartados">{record.wasteKg?.toFixed(2) ?? '-'}</td>
                 <td data-label="Custo">
                   {record.wasteCost?.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL'
+                  }) ?? '-'}
+                </td>
+                <td data-label="Preço desperdiçado">
+                  {record.wastePrice?.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL'
                   }) ?? '-'}

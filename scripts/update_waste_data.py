@@ -29,18 +29,22 @@ def normalize_number(value: Optional[float]) -> Optional[float]:
 class WasteRecord:
     date: datetime
     product: str
+    category: Optional[str]
     cost_per_kg: Optional[float]
     waste_kg: Optional[float]
     waste_cost: Optional[float]
+    waste_price: Optional[float]
     reason: Optional[str]
 
     def as_dict(self) -> dict:
         return {
             "date": self.date.isoformat(),
             "product": self.product,
+            "category": self.category,
             "costPerKg": normalize_number(self.cost_per_kg),
             "wasteKg": normalize_number(self.waste_kg),
             "wasteCost": normalize_number(self.waste_cost),
+            "wastePrice": normalize_number(self.waste_price),
             "reason": self.reason if self.reason else None,
         }
 
@@ -52,6 +56,8 @@ class MonthSheet:
     client: str
     cmv_atual: float
     faturamento_medio: float
+    venda_desperdicada: float
+    percentual_venda_desperdicada: float
     records: List[WasteRecord]
 
     @property
@@ -95,6 +101,8 @@ def load_month_sheet(sheet) -> MonthSheet:
     cmv_atual = 0.0
     faturamento_medio = 0.0
     month_date: Optional[datetime] = None
+    venda_desperdicada = 0.0
+    percentual_venda_desperdicada = 0.0
 
     for row in sheet.iter_rows(min_row=1, max_row=10, values_only=True):
         if not row:
@@ -106,6 +114,10 @@ def load_month_sheet(sheet) -> MonthSheet:
         elif label == "MÊS:":
             month_date = row[2]
             faturamento_medio = float(row[6] or 0.0)
+        elif row[6] == "Venda desperdiçada":
+            venda_desperdicada = float(row[7] or 0.0)
+        elif row[6] == "%":
+            percentual_venda_desperdicada = float(row[7] or 0.0)
 
     if not month_date:
         raise RuntimeError(f"Data do mês não encontrada na aba '{sheet.title}'.")
@@ -120,9 +132,11 @@ def load_month_sheet(sheet) -> MonthSheet:
 
     DATA_COL = 1
     PRODUTO_COL = 2
+    CATEGORIA_COL = 3
     CUSTO_KG_COL = 4
     PESO_COL = 5
     CUSTO_COL = 6
+    PRECO_COL = 7
     MOTIVO_COL = 8
 
     records: List[WasteRecord] = []
@@ -140,9 +154,11 @@ def load_month_sheet(sheet) -> MonthSheet:
             WasteRecord(
                 date=date_cell,
                 product=str(product_cell),
+                category=str(row[CATEGORIA_COL]).strip() if len(row) > CATEGORIA_COL and row[CATEGORIA_COL] else None,
                 cost_per_kg=normalize_number(row[CUSTO_KG_COL]) if len(row) > CUSTO_KG_COL else None,
                 waste_kg=normalize_number(row[PESO_COL]) if len(row) > PESO_COL else None,
                 waste_cost=normalize_number(row[CUSTO_COL]) if len(row) > CUSTO_COL else None,
+                waste_price=normalize_number(row[PRECO_COL]) if len(row) > PRECO_COL else None,
                 reason=str(row[MOTIVO_COL]).strip() if len(row) > MOTIVO_COL and row[MOTIVO_COL] else None,
             )
         )
@@ -153,6 +169,8 @@ def load_month_sheet(sheet) -> MonthSheet:
         client=client,
         cmv_atual=cmv_atual,
         faturamento_medio=faturamento_medio,
+        venda_desperdicada=venda_desperdicada,
+        percentual_venda_desperdicada=percentual_venda_desperdicada,
         records=records,
     )
 
@@ -175,6 +193,7 @@ def main() -> None:
         raise RuntimeError("Nenhuma aba de desperdício encontrada na planilha.")
 
     month_sheets.sort(key=lambda item: item.month)
+    earliest = month_sheets[0]
     latest = month_sheets[-1]
 
     waste_records = sorted(
@@ -182,15 +201,32 @@ def main() -> None:
         key=lambda record: record.date,
     )
 
+    total_cmv_em_reais = sum(month.cmv_em_reais for month in month_sheets)
+    total_custo_desperdicio = sum(month.custo_desperdicio for month in month_sheets)
+    total_venda_desperdicada = sum(month.venda_desperdicada for month in month_sheets)
+    percentual_desperdicio_total = (
+        (total_custo_desperdicio / total_cmv_em_reais)
+        if total_cmv_em_reais
+        else 0.0
+    )
+    faturamento_total = latest.faturamento_medio * len(month_sheets)
+    percentual_venda_desperdicada_total = (
+        (total_venda_desperdicada / faturamento_total) if faturamento_total else 0.0
+    )
+
     dataset = {
         "clientInfo": {
             "client": latest.client,
             "cmvAtual": latest.cmv_atual,
             "month": latest.month.isoformat(),
+            "monthStart": earliest.month.isoformat(),
+            "monthEnd": latest.month.isoformat(),
             "faturamentoMedio": latest.faturamento_medio,
-            "cmvEmReais": latest.cmv_em_reais,
-            "custoDesperdicio": latest.custo_desperdicio,
-            "percentualDesperdicio": latest.percentual_desperdicio,
+            "cmvEmReais": total_cmv_em_reais,
+            "custoDesperdicio": total_custo_desperdicio,
+            "percentualDesperdicio": percentual_desperdicio_total,
+            "vendaDesperdicada": total_venda_desperdicada,
+            "percentualVendaDesperdicada": percentual_venda_desperdicada_total,
         },
         "products": products,
         "wasteRecords": [record.as_dict() for record in waste_records],

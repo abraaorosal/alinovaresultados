@@ -3,6 +3,8 @@ import {
   Area,
   AreaChart,
   CartesianGrid,
+  Legend,
+  Line,
   ResponsiveContainer,
   Tooltip,
   XAxis,
@@ -11,7 +13,7 @@ import {
 import './ChartCard.css';
 
 interface WasteTrendChartProps {
-  data: Array<{ date: string; wasteCost: number; wasteKg: number }>;
+  data: Array<{ date: string; wasteCost: number; wasteKg: number; wastePrice: number }>;
 }
 
 const currencyFormatter = (value: number) =>
@@ -73,11 +75,12 @@ export const WasteTrendChart: FC<WasteTrendChartProps> = ({ data }) => (
             width={70}
           />
           <Tooltip
-            formatter={(value: number, name) =>
-              name === 'wasteCost'
-                ? currencyFormatter(value)
-                : `${value.toFixed(2)} kg`
-            }
+            formatter={(value: number, name) => {
+              if (name === 'wasteCost' || name === 'wastePrice') {
+                return currencyFormatter(value);
+              }
+              return `${value.toFixed(2)} kg`;
+            }}
             labelFormatter={(label) =>
               new Date(label).toLocaleDateString('pt-BR', {
                 day: '2-digit',
@@ -101,6 +104,15 @@ export const WasteTrendChart: FC<WasteTrendChartProps> = ({ data }) => (
             strokeWidth={2}
             name="Custo"
           />
+          <Line
+            type="monotone"
+            dataKey="wastePrice"
+            stroke="#fb923c"
+            strokeWidth={2}
+            dot={false}
+            name="Venda desperdiçada"
+            yAxisId="left"
+          />
           <Area
             type="monotone"
             dataKey="wasteKg"
@@ -111,6 +123,7 @@ export const WasteTrendChart: FC<WasteTrendChartProps> = ({ data }) => (
             strokeWidth={2}
             name="Kg descartados"
           />
+          <Legend />
         </AreaChart>
       </ResponsiveContainer>
     </div>

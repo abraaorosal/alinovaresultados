@@ -24,7 +24,7 @@ const formatMonth = (iso: string) =>
 const App = () => {
   const [selectedReason, setSelectedReason] = useState<string>('todos');
   const [selectedProduct, setSelectedProduct] = useState<string>('todos');
-  const [selectedRange, setSelectedRange] = useState<DateRangeOption>('mes');
+  const [selectedRange, setSelectedRange] = useState<DateRangeOption>('acumulado');
 
   const { clientInfo } = dataset;
 
@@ -51,7 +51,15 @@ const App = () => {
     range: selectedRange
   });
 
-  const monthLabel = formatMonth(clientInfo.month);
+  const periodLabel = useMemo(() => {
+    if (clientInfo.monthStart && clientInfo.monthEnd) {
+      const sameMonth = clientInfo.monthStart === clientInfo.monthEnd;
+      const startLabel = formatMonth(clientInfo.monthStart);
+      const endLabel = formatMonth(clientInfo.monthEnd);
+      return sameMonth ? startLabel : `${startLabel} a ${endLabel}`;
+    }
+    return formatMonth(clientInfo.month);
+  }, [clientInfo.month, clientInfo.monthEnd, clientInfo.monthStart]);
 
   return (
     <main className="dashboard">
@@ -60,8 +68,8 @@ const App = () => {
           <span className="dashboard__badge">Relatório de desperdício</span>
           <h1>{clientInfo.client}</h1>
           <p>
-            Visão analítica do desperdício de alimentos, com indicadores do mês de{' '}
-            <strong>{monthLabel}</strong> e comparativos de custo, volume e motivos.
+            Visão analítica do desperdício de alimentos, com indicadores do período de{' '}
+            <strong>{periodLabel}</strong> e comparativos de custo, volume e motivos.
           </p>
         </div>
         <div className="dashboard__highlights">
